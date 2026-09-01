@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Fix for legacy polyfills/extensions trying to overwrite window.fetch
+      const originalFetch = window.fetch;
+      Object.defineProperty(window, 'fetch', {
+        configurable: true,
+        enumerable: true,
+        get: () => originalFetch,
+        set: (val) => { 
+          console.warn('Blocked attempt to overwrite window.fetch', val); 
+        }
+      });
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonia Academy</title>
+    <meta name="description" content="Online language learning platform for French and English." />
+    <meta property="og:title" content="Sonia Academy" />
+    <meta property="og:description" content="Online language learning platform for French and English." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+      <link rel="icon" type="image/png" href="/logo.png" />
+    <meta property="og:image" content="/og-banner.jpg" />
+    <meta name="twitter:image" content="/og-banner.jpg" />
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

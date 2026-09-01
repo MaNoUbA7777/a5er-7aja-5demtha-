@@ -1,0 +1,65 @@
+{
+  "collections": {
+    "users": {
+      "rules": "Users can read and write their own documents. Admins can read and write all documents.",
+      "schema": {
+        "email": "string",
+        "role": "string ('admin' | 'student')",
+        "firstName": "string",
+        "lastName": "string",
+        "phone": "string",
+        "governorate": "string",
+        "delegation": "string",
+        "parentContact": {
+          "name": "string",
+          "phone": "string",
+          "email": "string"
+        },
+        "createdAt": "timestamp"
+      }
+    },
+    "video_lessons": {
+      "rules": "Any authenticated user can read. Only admins can create, update, or delete.",
+      "schema": {
+        "title": "string",
+        "url": "string",
+        "description": "string",
+        "subject": "string",
+        "createdAt": "timestamp",
+        "createdBy": "string"
+      }
+    },
+    "classes": {
+      "rules": "Any authenticated user can read. Only admins can create, update, or delete.",
+      "schema": {
+        "title": "string",
+        "date": "string",
+        "startTime": "string",
+        "endTime": "string",
+        "zoomLink": "string",
+        "subject": "string",
+        "createdAt": "timestamp"
+      }
+    },
+    "billing_requests": {
+      "rules": "Users can read and create their own requests. Admins can read and update all requests.",
+      "schema": {
+        "userId": "string",
+        "userEmail": "string",
+        "plan": "string",
+        "amount": "number",
+        "status": "string ('pending' | 'approved' | 'rejected')",
+        "createdAt": "timestamp"
+      }
+    },
+    "logs": {
+      "rules": "Only admins can read and write.",
+      "schema": {
+        "action": "string",
+        "adminEmail": "string",
+        "details": "string",
+        "createdAt": "timestamp"
+      }
+    }
+  }
+}

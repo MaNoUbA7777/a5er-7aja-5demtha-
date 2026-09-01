@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isAuth() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      // The user manouba139@gmail.com is an admin automatically.
+      return isAuth() && (
+        request.auth.token.email == 'manouba139@gmail.com' ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
+      );
+    }
+    
+    match /users/{userId} {
+      allow read, write: if isAuth() && (request.auth.uid == userId || isAdmin());
+    }
+    
+    match /video_lessons/{lessonId} {
+      allow read: if isAuth();
+      allow write: if isAdmin();
+    }
+    
+    match /classes/{classId} {
+      allow read: if isAuth();
+      allow write: if isAdmin();
+    }
+    
+    match /billing_requests/{requestId} {
+      allow read: if isAuth() && (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if isAuth() && request.auth.uid == request.resource.data.userId;
+      allow update, delete: if isAdmin();
+    }
+    
+    match /logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

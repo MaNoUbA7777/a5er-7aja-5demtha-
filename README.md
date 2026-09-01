@@ -1,71 +1,20 @@
-# 🌐 My Website
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-This is a web application that you can run on your computer.
+# Run and deploy your AI Studio app
 
-You **do not need to know anything about AI** to use or run this project. Just follow the steps below.
+This contains everything you need to run your app locally.
 
-## 📋 What You Need
+View your app in AI Studio: https://ai.studio/apps/75ea28ba-318b-4b64-a706-3f03f1486ebb
 
-Before starting, make sure you have:
+## Run Locally
 
-* A computer
-* An internet connection
-* **Node.js** installed
+**Prerequisites:**  Node.js
 
-If you don't have Node.js, download and install it from the official website.
 
-## 🚀 How to Start the Website
-
-### 1. Open the Project
-
-Open the project folder on your computer.
-
-### 2. Open the Terminal
-
-Inside the project folder:
-
-* On Windows: Right-click inside the folder and choose **Open in Terminal**
-* Or open Command Prompt / PowerShell and go to the project folder.
-
-### 3. Install the Required Files
-
-Write this command in the terminal:
-
-```bash
-npm install
-```
-
-Wait until the installation is finished.
-
-### 4. Start the Website
-
-After the installation finishes, run:
-
-```bash
-npm run dev
-```
-
-The terminal will show you a local address, usually something like:
-
-```text
-http://localhost:5173
-```
-
-Open this address in your browser to see the website.
-
-## ⚙️ Important
-
-If the project asks for a **Gemini API Key**, you will need to add it to the `.env.local` file.
-
-If you don't know what an API key is, don't worry — follow the setup instructions provided with the project.
-
-## ❓ Having Problems?
-
-If the website doesn't start:
-
-1. Make sure Node.js is installed.
-2. Make sure you are inside the correct project folder.
-3. Run `npm install` again.
-4. Then run `npm run dev`.
-
-That's it! 🎉
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
